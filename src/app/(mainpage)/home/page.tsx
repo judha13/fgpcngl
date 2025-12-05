@@ -141,7 +141,7 @@ export default function HomePage() {
           <div className="flex justify-center md:justify-end order-1 md:order-2 md:col-span-2">
             <Link href="/aboutus" className="relative group block">
               <Image
-                src="/aboutus/about_1(pr.joyson).jpg"
+                src="/home/pr-joyson.jpg"
                 alt="Pastor Joyson"
                 width={500}
                 height={400}
