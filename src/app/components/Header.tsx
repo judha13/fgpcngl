@@ -10,7 +10,7 @@ export default function Header() {
     const [isDonationOpen, setIsDonationOpen] = useState(false);
 
     return (
-        <header className="bg-[#222222CC] text-[#DEDEDE] py-2 md:py-2 top-4 z-50 shadow sticky max-w-4xl mx-4 md:mx-auto mt-3 rounded-lg">
+        <header className="bg-[#222222CC] text-[#DEDEDE] py-3 md:py-3 top-4 z-50 shadow sticky max-w-6xl mx-4 md:mx-auto mt-3 rounded-lg">
             <div className="max-w-6xl mx-auto flex items-center justify-between px-3 font-poppins">
                 {/* Logo */}
                 <div className="flex items-center flex-shrink-0 bg-[#3E3E3E] rounded-[10px] p-[0px] md:p-[6px]">
@@ -26,14 +26,14 @@ export default function Header() {
                 </div>
 
                 {/* Desktop Nav */}
-                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-2 mx-auto">
+                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-1 mx-auto">
                     {["About Us", "Johnsam Joyson", "Davidsam Joyson", "Ministries", "upcoming", "Contact Us"].map((item) => {
 
                         return (
                             <Link
                                 key={item}
                                 href={`#${item.toLowerCase().replace(/\s/g, "")}`}
-                                className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal"
+                                className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-2 py-1.5 rounded-[10px] text-[13px] font-normal whitespace-nowrap"
                             >
                                 {item}
                             </Link>
@@ -41,7 +41,7 @@ export default function Header() {
                     })}
                     <button
                         onClick={() => setIsDonationOpen(true)}
-                        className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal text-[#DEDEDE] hover:bg-[#4E4E4E] transition-colors"
+                        className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-2 py-1.5 rounded-[10px] text-[13px] font-normal text-[#DEDEDE] hover:bg-[#4E4E4E] transition-colors whitespace-nowrap"
                     >
                         Give Us
                     </button>
