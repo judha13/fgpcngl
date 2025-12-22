@@ -30,25 +30,34 @@ export default function GlobalLoader({ children }: { children: React.ReactNode }
                 };
             });
 
-            // fallback timeout in case images hang
             setTimeout(() => {
                 setLoading(false);
-            }, 5000);
+            }, 1000);
         };
 
-        const delay = setTimeout(handleImagesLoaded, 50); // wait for new DOM
+        const delay = setTimeout(handleImagesLoaded, 50);
 
         return () => clearTimeout(delay);
     }, [pathname]);
 
+    useEffect(() => {
+        if (loading) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [loading]);
+
     return (
         <div className="relative">
-            {/* Blur effect on content */}
             <div className={loading ? "blur-sm pointer-events-none transition-all duration-300" : "transition-all duration-300"}>
                 {children}
             </div>
 
-            {/* Spinner centered in viewport */}
             {loading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm z-50">
                     <div className="w-12 h-12 border-4 border-[#84373D] border-t-transparent rounded-full animate-spin"></div>
