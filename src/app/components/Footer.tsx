@@ -1,8 +1,10 @@
 'use client'
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import useBlurFadeIn from '../hooks/useBlurFadeIn';
+import DonationDialog from './DonationDialog';
 
 const socialLinks = [
     { href: "https://www.facebook.com/fgpcnagercoil", icon: "facebook" },
@@ -10,6 +12,7 @@ const socialLinks = [
     { href: "https://www.youtube.com/@fgpcngl", icon: "youtube" },
 ];
 export default function Footer() {
+    const [isDonationOpen, setIsDonationOpen] = useState(false);
     useBlurFadeIn();
     return (
         <footer className="font-poppins">
@@ -48,6 +51,7 @@ export default function Footer() {
                             <li><Link href="/sermons" className="hover:text-white">Sermons</Link></li>
                             <li><Link href="/gallery" className="hover:text-white">Gallery</Link></li>
                             <li><Link href="/contactus" className="hover:text-white">Contact Us</Link></li>
+                            <li><button onClick={() => setIsDonationOpen(true)} className="hover:text-white text-left">Give us</button></li>
                         </ul>
                     </div>
 
@@ -95,6 +99,8 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+
+            <DonationDialog isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
         </footer>
     );
 }
