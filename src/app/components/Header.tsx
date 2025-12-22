@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import DonationDialog from "./DonationDialog";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDonationOpen, setIsDonationOpen] = useState(false);
 
     return (
         <header className="bg-[#222222CC] text-[#DEDEDE] py-2 md:py-2 top-4 z-50 shadow sticky max-w-4xl mx-4 md:mx-auto mt-3 rounded-lg">
@@ -37,6 +39,12 @@ export default function Header() {
                             </Link>
                         );
                     })}
+                    <button
+                        onClick={() => setIsDonationOpen(true)}
+                        className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal text-[#DEDEDE] hover:bg-[#4E4E4E] transition-colors"
+                    >
+                        Give Us
+                    </button>
                 </nav>
 
                 {/* Right side */}
@@ -86,9 +94,20 @@ export default function Header() {
                                 {item.label}
                             </Link>
                         ))}
+                        <button
+                            onClick={() => {
+                                setIsDonationOpen(true);
+                                setIsMenuOpen(false);
+                            }}
+                            className="px-5 py-3 text-[#DEDEDE] text-[15px] tracking-wide hover:bg-[#3A3A3A] transition-colors text-left w-full"
+                        >
+                            Give Us
+                        </button>
                     </div>
                 </nav>
             )}
+
+            <DonationDialog isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
         </header>
     );
 }
