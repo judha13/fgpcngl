@@ -26,7 +26,7 @@ export default function Header() {
                 </div>
 
                 {/* Desktop Nav */}
-                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-1 mx-auto">
+                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-1 w-fit">
                     {["About Us", "Johnsam Joyson", "Davidsam Joyson", "Ministries", "upcoming", "Contact Us"].map((item) => {
 
                         return (
