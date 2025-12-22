@@ -30,6 +30,7 @@ export default function DonationDialog({ isOpen, onClose }: DonationDialogProps)
   const [selectedAmount, setSelectedAmount] = useState(4000);
   const [customAmount, setCustomAmount] = useState('');
   const [showBankDetails, setShowBankDetails] = useState(false);
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   if (!isOpen) return null;
 
@@ -191,10 +192,7 @@ export default function DonationDialog({ isOpen, onClose }: DonationDialogProps)
 
               {/* Donate Button */}
               <button
-                onClick={() => {
-                  alert(`Thank you for your ${isMonthly ? 'monthly' : 'generous'} donation of ₹${finalAmount}!`);
-                  onClose();
-                }}
+                onClick={() => setShowComingSoon(true)}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition text-lg"
               >
                 {isMonthly ? 'Donate monthly' : 'Donate now'}
@@ -202,6 +200,72 @@ export default function DonationDialog({ isOpen, onClose }: DonationDialogProps)
             </div>
           </div>
         </div>
+
+        {/* Coming Soon Modal */}
+        {showComingSoon && (
+          <>
+            <div className="fixed inset-0 bg-black/50 z-[60]" onClick={() => setShowComingSoon(false)}></div>
+            <div className="fixed inset-0 flex items-center justify-center z-[70] p-4">
+              <div className="bg-white rounded-2xl max-w-md w-full p-8 shadow-2xl text-center animate-in">
+                <button
+                  onClick={() => setShowComingSoon(false)}
+                  className="text-gray-400 hover:text-gray-600 text-2xl mb-4 float-right"
+                >
+                  ✕
+                </button>
+
+                <div className="flex justify-center mb-6 clear-both">
+                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
+                    <i className="fas fa-wrench text-3xl text-blue-600"></i>
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold text-[#222831] mb-3 font-montserrat">
+                  Coming Soon
+                </h3>
+
+                <p className="text-gray-700 mb-6 text-lg">
+                  Online donation feature is coming soon.
+                </p>
+
+                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6 text-left rounded">
+                  <p className="text-sm text-gray-700 font-semibold mb-3">
+                    For now, please use manual bank transfer:
+                  </p>
+                  <div className="space-y-2 text-sm text-gray-700">
+                    <div>
+                      <p className="font-semibold">Bank:</p>
+                      <p>{bankDetails.bankName}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Account Name:</p>
+                      <p>{bankDetails.accountName}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold">Account Number:</p>
+                      <p className="font-mono">{bankDetails.accountNumber}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold">IFSC Code:</p>
+                      <p className="font-mono">{bankDetails.ifscCode}</p>
+                    </div>
+                    <div>
+                      <p className="font-semibold">UPI ID:</p>
+                      <p className="font-mono">{bankDetails.upiId}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setShowComingSoon(false)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition"
+                >
+                  Got it!
+                </button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
