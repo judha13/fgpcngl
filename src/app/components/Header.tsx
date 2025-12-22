@@ -10,7 +10,7 @@ export default function Header() {
     const [isDonationOpen, setIsDonationOpen] = useState(false);
 
     return (
-        <header className="bg-[#222222CC] text-[#DEDEDE] py-3 md:py-3 top-4 z-50 shadow sticky mx-4 md:mx-auto mt-3 rounded-lg">
+        <header className="bg-[#222222CC] text-[#DEDEDE] py-3 md:py-3 top-4 z-50 shadow sticky mx-auto mt-3 rounded-lg w-fit">
             <div className="flex items-center justify-between px-3 font-poppins">
                 {/* Logo */}
                 <div className="flex items-center flex-shrink-0 bg-[#3E3E3E] rounded-[10px] p-[0px] md:p-[6px]">
