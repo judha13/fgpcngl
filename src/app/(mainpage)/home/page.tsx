@@ -58,11 +58,11 @@ export default function HomePage() {
                 9488484745
               </a>
               <a
-                href="mailto:fgpcngl@gmail.com"
+                href="mailto:mail@fgpcngl.com"
                 className="px-3 sm:px-4 py-2 sm:py-3 bg-white text-[#84373D] rounded-[10px] hover:bg-[#EEEEEEFC] transition duration-300 text-center"
               >
                 <i className="fas fa-envelope mr-2"></i>
-                fgpcngl@gmail.com
+                mail@fgpcngl.com
               </a>
             </div>
           </div>
@@ -661,14 +661,14 @@ export default function HomePage() {
               </a>
 
               {/* Email */}
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fgpcngl@gmail.com" className="block hover:no-underline">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail@fgpcngl.com" className="block hover:no-underline">
                 <div className="flex items-center bg-white border rounded-[10px] p-4 shadow-sm hover:shadow-md transition duration-300 blur_fade_in_up">
                   <div className="bg-[#3E3E3E] text-[#DEDEDE] px-4 py-3 rounded-[10px] mr-4 hover:bg-[#84373D] transition duration-300">
                     <i className="fas fa-envelope text-lg cursor-pointer"></i>
                   </div>
                   <div>
                     <p className="font-medium text-lg">Email</p>
-                    <p className="text-md text-[#555]">fgpcngl@gmail.com</p>
+                    <p className="text-md text-[#555]">mail@fgpcngl.com</p>
                   </div>
                 </div>
               </a>
