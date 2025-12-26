@@ -10,8 +10,8 @@ export default function Header() {
     const [isDonationOpen, setIsDonationOpen] = useState(false);
 
     return (
-        <header className="bg-[#222222CC] text-[#DEDEDE] py-3 md:py-3 top-4 z-50 shadow sticky mx-auto mt-3 rounded-lg w-fit">
-            <div className="flex items-center justify-between px-3 font-poppins">
+        <header className="bg-[#222222CC] text-[#DEDEDE] py-2 md:py-2 top-4 z-50 shadow sticky max-w-4xl mx-4 md:mx-auto mt-3 rounded-lg sm:w-fit">
+            <div className=" flex items-center justify-between px-3 font-poppins space-x-4">
                 {/* Logo */}
                 <div className="flex items-center flex-shrink-0 bg-[#3E3E3E] rounded-[10px] p-[0px] md:p-[6px]">
                     <Link href="/home">
@@ -48,7 +48,7 @@ export default function Header() {
                 </nav>
 
                 {/* Right side */}
-                <div className="flex items-center bg-[#3E3E3E] px-2 py-1 rounded-[10px]">
+                <div className="md:hidden flex items-center bg-[#3E3E3E] px-2 py-1 rounded-[10px]">
                     {/* Mobile menu button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
