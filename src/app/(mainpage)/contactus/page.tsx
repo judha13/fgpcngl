@@ -148,7 +148,7 @@ export default function ContactUsPage() {
                   <a href="https://www.instagram.com/fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-instagram text-md"></i>
                   </a>
-                  <a href="https://www.youtube.com/@fgpcngl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
+                  <a href="https://www.youtube.com/@fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-youtube text-md"></i>
                   </a>
                 </div>
