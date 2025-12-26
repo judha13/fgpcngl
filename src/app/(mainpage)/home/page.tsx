@@ -97,7 +97,7 @@ export default function HomePage() {
             <div className="mt-6">
               <div className="flex flex-wrap gap-3">
                 {[
-                  { icon: "fab fa-youtube", label: "fgpcngl", link: "https://www.youtube.com/@fgpcngl" },
+                  { icon: "fab fa-youtube", label: "fgpcngl", link: "https://www.youtube.com/@fgpcnagercoil" },
                   { icon: "fab fa-instagram", label: "fgpcnagercoil", link: "https://www.instagram.com/fgpcnagercoil" },
                   { icon: "fab fa-facebook", label: "fgpcnagercoil", link: "https://www.facebook.com/fgpcnagercoil" }
                 ].map((item, idx) => (
@@ -711,7 +711,7 @@ export default function HomePage() {
                   <a href="https://www.instagram.com/fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-instagram text-md"></i>
                   </a>
-                  <a href="https://www.youtube.com/@fgpcngl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
+                  <a href="https://www.youtube.com/@fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-youtube text-md"></i>
                   </a>
                 </div>

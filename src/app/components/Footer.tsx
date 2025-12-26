@@ -9,7 +9,7 @@ import DonationDialog from './DonationDialog';
 const socialLinks = [
     { href: "https://www.facebook.com/fgpcnagercoil", icon: "facebook" },
     { href: "https://www.instagram.com/fgpcnagercoil", icon: "instagram" },
-    { href: "https://www.youtube.com/@fgpcngl", icon: "youtube" },
+    { href: "https://www.youtube.com/@fgpcnagercoil", icon: "youtube" },
 ];
 export default function Footer() {
     const [isDonationOpen, setIsDonationOpen] = useState(false);
