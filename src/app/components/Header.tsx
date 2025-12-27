@@ -14,7 +14,7 @@ export default function Header() {
             <div className=" flex items-center justify-between px-3 font-poppins space-x-4">
                 {/* Logo */}
                 <div className="flex items-center flex-shrink-0 bg-[#3E3E3E] rounded-[10px] p-[0px] md:p-[6px]">
-                    <Link href="/home">
+                    <Link href="/#">
                         <Image
                             src="/header/fgpc_nagercoil_logo.jpg"
                             alt="Scott School logo"
@@ -76,7 +76,7 @@ export default function Header() {
                 >
                     <div className="flex flex-col divide-y divide-[#4E4E4E]/50">
                         {[
-                            { label: "Home", href: "#home" },
+                            { label: "Home", href: "#" },
                             { label: "About Us", href: "#aboutus" },
                             { label: "Johnsam Joyson", href: "#johnsamjoyson" },
                             { label: "Davidsam Joyson", href: "#davidsamjoyson" },
