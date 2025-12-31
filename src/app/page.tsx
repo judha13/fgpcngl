@@ -372,14 +372,19 @@ export default function HomePage() {
 
             {/* RIGHT COLUMN - Event & Song Details */}
             <div className="space-y-4 max-w-xl mx-auto mt-8 md:mt-0">
-              {/* Event Card */}
+              {/* Event Card 1 */}
               <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <Image
-                  src="/home/new_year_2026.jpg"
-                  alt="New Year 2026" width={112}
-                  height={112} quality={100}
-                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
-                />
+                <a
+                  href="https://www.youtube.com/live/oypoxHFseSA?si=sUcSp6yYyKsjO6YC"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <Image
+                    src="/home/new_year_2026.jpg"
+                    alt="New Year 2026" width={112}
+                    height={112} quality={100}
+                    className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
+                  />
+                </a>
                 <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
                   <h3 className="text-2xl md:text-xl font-semibold text-gray-900 mb-2 leading-snug">
                     New Year Service 2026
@@ -388,62 +393,54 @@ export default function HomePage() {
                     <span className="font-semibold text-gray-900">Place:</span> Concordia School Ground, Nagercoil
                   </p>
                   <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Date & Time:</span> Dec 31st, 8.30 Pm
-                  </p>
-                </div>
-              </div>
-
-              {/* Song Card 1 */}
-              <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <Image
-                  src="/songs/johnsam/um-nithiyai-solla-latest.jpg"
-                  alt="Johnsam Joyson Song" width={112}
-                  height={112} quality={100}
-                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
-                />
-                <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">New Song {`"UM NEETHIYAI"`}</h3>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Sung By:</span> Johnsam Joyson
-                  </p>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Released On:</span> August 17th, 2025, 6:00 PM
+                    <span className="font-semibold text-gray-900">Date & Time:</span> Dec 31st, 8.30 PM
                   </p>
                   <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">Listen Now:</span>{' '}
+                    <span className="font-semibold text-gray-900">Live streaming:</span>{' '}
                     <a
-                      href="https://youtu.be/CwjJXGy0nkQ?si=RkfOTHqAQQTao2FM"
+                      href="https://www.youtube.com/live/oypoxHFseSA?si=sUcSp6yYyKsjO6YC"
                       target="_blank"
                       rel="noopener noreferrer">
-                      <span className="text-[#84373D] font-semibold">Watch Here</span>
+                      <span className="text-[#84373D] font-semibold">watch now</span>
                     </a>
                   </p>
                 </div>
               </div>
 
-              {/* Song Card 2 */}
+              {/* Event Card 2 */}
               <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
                 <Image
-                  src="/songs/davidsam/neer-indri-latest.webp"
-                  alt="Davidsam Joyson Song" width={112}
+                  src="/home/baptism_service.jpeg"
+                  alt="Baptism Service" width={112}
                   height={112} quality={100}
                   className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
                 />
                 <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">New Song {`"NEERINDRI"`}</h3>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Baptism Service</h3>
                   <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Sung By:</span> Davidsam Joyson
+                    <span className="font-semibold text-gray-900">Place:</span> Full Gospel Pentecostal Church
                   </p>
                   <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Released On:</span> Jun 28th, 2025, 6:30 PM
+                    <span className="font-semibold text-gray-900">Date & Time:</span> Jan 3, 9.00 AM
                   </p>
-                  <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">Listen Now:</span>{' '}
-                    <a href="https://youtu.be/3OtDemZ68bA?si=CfVkPZiT-azowRx4"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <span className="text-[#84373D] font-semibold">Watch Here</span>
-                    </a>
+                </div>
+              </div>
+
+              {/* Event Card 3 */}
+              <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                <Image
+                  src="/home/special_fasting_prayer.jpeg"
+                  alt="Special Fasting Prayer" width={112}
+                  height={112} quality={100}
+                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
+                />
+                <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Special Fasting prayer 2026</h3>
+                  <p className="text-gray-700 text-base md:text-sm mb-1">
+                    <span className="font-semibold text-gray-900">Place:</span> Full Gospel Pentecostal Church
+                  </p>
+                  <p className="text-gray-700 text-base md:text-sm mb-1">
+                    <span className="font-semibold text-gray-900">Date & Time:</span> Jan 7 - Jan 9, 10.00 AM
                   </p>
                 </div>
               </div>
