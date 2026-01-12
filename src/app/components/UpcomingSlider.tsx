@@ -14,12 +14,12 @@ const images = [
         label: 'New Year 2026',
     },
     {
-        src: '/home/baptism_service.jpeg',
-        label: 'Upcoming Baptism Service',
+        src: '/songs/johnsam/um-nithiyai-solla-latest.jpg',
+        label: 'Upcoming Johnsam Joyson Song',
     },
     {
-        src: '/home/special_fasting_prayer.jpeg',
-        label: 'Upcoming Special Fasting Prayer',
+        src: '/songs/davidsam/neer-indri-latest.webp',
+        label: 'Upcoming Davidsam Joyson Song',
     },
 ]
 

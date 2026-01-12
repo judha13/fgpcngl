@@ -10,10 +10,10 @@ import 'swiper/css/pagination'
 
 export default function ImageSlider() {
   const images = [
-    'new_year(2026)-1', 'new_year(2026)-2', 'new_year(2026)-3',
-    'new_year(2026)-4', 'new_year(2026)-5', 'new_year(2026)-6',
-    'new_year(2026)-7', 'new_year(2026)-8', 'new_year(2026)-9',
-    'new_year(2026)-10'
+    'new_year(2026)-3', 'new_year(2026)-8', 'new_year(2026)-6',
+    'new_year(2026)-9', 'new_year(2026)-5', 'new_year(2026)-10',
+    'new_year(2026)-1', 'new_year(2026)-2', 'new_year(2026)-7',
+    'new_year(2026)-4'
   ]
 
   const [previewImage, setPreviewImage] = useState<string | null>(null)
@@ -39,8 +39,8 @@ export default function ImageSlider() {
           <Image
             src={previewImage!}
             alt="Preview"
-              width={400}
-              height={320} quality={100}  
+              width={600}
+              height={400} quality={100}  
             className="rounded-xl shadow-lg object-contain"
           />
           <button
