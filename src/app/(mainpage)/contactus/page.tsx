@@ -98,14 +98,14 @@ export default function ContactUsPage() {
               </a>
 
               {/* Email */}
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail@fgpcngl.com" className="block hover:no-underline">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fgpcngl@gmail.com" className="block hover:no-underline">
                 <div className="flex items-center bg-white border rounded-[10px] p-4 shadow-sm hover:shadow-md transition duration-300 blur_fade_in_up">
                   <div className="bg-[#3E3E3E] text-[#DEDEDE] px-4 py-3 rounded-[10px] mr-4 hover:bg-[#84373D] transition duration-300">
                     <i className="fas fa-envelope text-lg cursor-pointer"></i>
                   </div>
                   <div>
                     <p className="font-medium text-lg">Email</p>
-                    <p className="text-md text-[#555]">mail@fgpcngl.com</p>
+                    <p className="text-md text-[#555]">fgpcngl@gmail.com</p>
                   </div>
                 </div>
               </a>
@@ -148,7 +148,7 @@ export default function ContactUsPage() {
                   <a href="https://www.instagram.com/fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-instagram text-md"></i>
                   </a>
-                  <a href="https://www.youtube.com/@fgpcnagercoil" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
+                  <a href="https://www.youtube.com/@fgpcngl" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center bg-[#3E3E3E] text-white rounded-[10px] hover:bg-[#84373D] transition duration-300">
                     <i className="fab fa-youtube text-md"></i>
                   </a>
                 </div>

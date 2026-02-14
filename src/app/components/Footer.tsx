@@ -1,18 +1,15 @@
 'use client'
 
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import useBlurFadeIn from '../hooks/useBlurFadeIn';
-import DonationDialog from './DonationDialog';
 
 const socialLinks = [
     { href: "https://www.facebook.com/fgpcnagercoil", icon: "facebook" },
     { href: "https://www.instagram.com/fgpcnagercoil", icon: "instagram" },
-    { href: "https://www.youtube.com/@fgpcnagercoil", icon: "youtube" },
+    { href: "https://www.youtube.com/@fgpcngl", icon: "youtube" },
 ];
 export default function Footer() {
-    const [isDonationOpen, setIsDonationOpen] = useState(false);
     useBlurFadeIn();
     return (
         <footer className="font-poppins">
@@ -51,7 +48,6 @@ export default function Footer() {
                             <li><Link href="/sermons" className="hover:text-white">Sermons</Link></li>
                             <li><Link href="/gallery" className="hover:text-white">Gallery</Link></li>
                             <li><Link href="/contactus" className="hover:text-white">Contact Us</Link></li>
-                            <li><button onClick={() => setIsDonationOpen(true)} className="hover:text-white text-left">Give us</button></li>
                         </ul>
                     </div>
 
@@ -72,7 +68,7 @@ export default function Footer() {
                         <h3 className="text-xl font-semibold mb-4 font-montserrat text-white blur_fade_in_up">CONTACT US</h3>
                         <p className="text-base font-poppins flex items-center gap-3 blur_fade_in_up">
                             <i className="fas fa-envelope"></i>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail@fgpcngl.com" className="hover:text-white">mail@fgpcngl.com</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fgpcngl@gmail.com" className="hover:text-white">fgpcngl@gmail.com</a>
                         </p>
                         <p className="text-base font-poppins mt-2 flex items-center gap-3 blur_fade_in_up">
                             <i className="fas fa-phone-alt rotate-90"></i>
@@ -99,8 +95,6 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-
-            <DonationDialog isOpen={isDonationOpen} onClose={() => setIsDonationOpen(false)} />
         </footer>
     );
 }

@@ -10,8 +10,8 @@ import 'swiper/css/pagination'
 
 const images = [
     {
-        src: '/home/new_year_2026.jpg',
-        label: 'New Year 2026',
+        src: '/ministries/upcoming-holy-spirit-meeting.jpg',
+        label: 'Holy Spirit Meeting',
     },
     {
         src: '/songs/johnsam/um-nithiyai-solla-latest.jpg',

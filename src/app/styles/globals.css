@@ -127,7 +127,6 @@ body {
 .background-blur {
   backdrop-filter: blur(10px);
 }
-
 @keyframes blurFadeInUp {
   0% {
     transform: translateY(10%);
@@ -149,8 +148,4 @@ body {
 
 .fade-animated-up {
   animation: blurFadeInUp 1s ease-out forwards;
-}
-
-html {
-  scroll-behavior: smooth;
 }

@@ -10,14 +10,14 @@ export default function Header() {
     const [isDonationOpen, setIsDonationOpen] = useState(false);
 
     return (
-        <header className="bg-[#222222CC] text-[#DEDEDE] py-2 md:py-2 top-4 z-50 shadow sticky max-w-4xl mx-4 md:mx-auto mt-3 rounded-lg sm:w-fit">
-            <div className=" flex items-center justify-between px-3 font-poppins space-x-4">
+        <header className="bg-[#222222CC] text-[#DEDEDE] py-2 md:py-2 top-4 z-50 shadow sticky max-w-4xl mx-4 md:mx-auto mt-3 rounded-lg">
+            <div className="max-w-6xl mx-auto flex items-center justify-between px-3 font-poppins">
                 {/* Logo */}
                 <div className="flex items-center flex-shrink-0 bg-[#3E3E3E] rounded-[10px] p-[0px] md:p-[6px]">
-                    <Link href="/#">
+                    <Link href="/home">
                         <Image
                             src="/header/fgpc_nagercoil_logo.jpg"
-                            alt="FGPC Nagercoil logo"
+                            alt="Scott School logo"
                             className="w-10 h-10 rounded-[10px]"
                             width={40}
                             height={40}
@@ -26,29 +26,38 @@ export default function Header() {
                 </div>
 
                 {/* Desktop Nav */}
-                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-1 w-fit">
-                    {["About Us", "Johnsam Joyson", "Davidsam Joyson", "Ministries", "upcoming", "Contact Us"].map((item) => {
+                <nav className="hidden bg-[#3E3E3E] px-3 py-2 rounded-[10px] md:flex space-x-2 mx-auto">
+                    {["Home", "About Us", "Ministries", "Sermons", "Songs", "Gallery", "Contact Us"].map((item) => {
+                        if (item === "Songs") {
+                            return (
+                                <div key="Songs" className="relative group">
+                                    <button className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal">
+                                        Songs ▾
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-2 ml-[-20px] w-60 bg-[#3E3E3E] text-[#DEDEDE] rounded-[10px] border border-[#4E4E4E] shadow-lg z-50
+                      opacity-0 scale-95 invisible group-hover:opacity-100 group-hover:scale-100 group-hover:visible
+                      transition-all duration-300 ease-in-out px-2 py-2">
+                                        <Link href="/johnsamjoyson" className="block px-4 py-1 hover:text-white">Johnsam Joyson</Link>
+                                        <Link href="/davidsamjoyson" className="block px-4 py-1 hover:text-white">Davidsam Joyson</Link>
+                                    </div>
+                                </div>
+                            );
+                        }
 
                         return (
                             <Link
                                 key={item}
-                                href={`#${item.toLowerCase().replace(/\s/g, "")}`}
-                                className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-2 py-1.5 rounded-[10px] text-[13px] font-normal whitespace-nowrap"
+                                href={`/${item.toLowerCase().replace(/\s/g, "")}`}
+                                className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal"
                             >
                                 {item}
                             </Link>
                         );
                     })}
-                    <button
-                        onClick={() => setIsDonationOpen(true)}
-                        className="bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-2 py-1.5 rounded-[10px] text-[13px] font-normal text-[#DEDEDE] hover:bg-[#4E4E4E] transition-colors whitespace-nowrap"
-                    >
-                        Give Us
-                    </button>
                 </nav>
 
                 {/* Right side */}
-                <div className="md:hidden flex items-center bg-[#3E3E3E] px-2 py-1 rounded-[10px]">
+                <div className="flex items-center bg-[#3E3E3E] px-2 py-1 rounded-[10px]">
                     {/* Mobile menu button */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -66,6 +75,14 @@ export default function Header() {
                             </svg>
                         )}
                     </button>
+
+                    {/* Register Button */}
+                    <button
+                        onClick={() => setIsDonationOpen(true)}
+                        className="hidden md:flex bg-[#3E3E3E] border border-[#4E4E4E] hover:border-white px-3 py-2 rounded-[10px] text-[14px] font-normal"
+                    >
+                        Give Us
+                    </button>
                 </div>
             </div>
 
@@ -76,33 +93,31 @@ export default function Header() {
                 >
                     <div className="flex flex-col divide-y divide-[#4E4E4E]/50">
                         {[
-                            { label: "Home", href: "#" },
-                            { label: "About Us", href: "#aboutus" },
-                            { label: "Johnsam Joyson", href: "#johnsamjoyson" },
-                            { label: "Davidsam Joyson", href: "#davidsamjoyson" },
-                            { label: "Ministries", href: "#ministries" },
-                            { label: "Upcoming", href: "#upcoming" },
-                            { label: "Location", href: "#location" },
-                            { label: "Contact Us", href: "#contactus" },
+                            { label: "Home", href: "/home" },
+                            { label: "About Us", href: "/aboutus" },
+                            { label: "Ministries", href: "/ministries" },
+                            { label: "Johnsam Joyson Songs", href: "/johnsamjoyson" },
+                            { label: "Davidsam Joyson Songs", href: "/davidsamjoyson" },
+                            { label: "Sermons", href: "/sermons" },
+                            { label: "Gallery", href: "/gallery" },
+                            { label: "Contact Us", href: "/contactus" },
+                            { label: "Give Us", href: "/" },
                         ].map((item) => (
                             <Link
                                 key={item.label}
                                 href={item.href}
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                    if (item.label === "Give Us") {
+                                        e.preventDefault();
+                                        setIsDonationOpen(true);
+                                    }
+                                    setIsMenuOpen(false);
+                                }}
                                 className="px-5 py-3 text-[#DEDEDE] text-[15px] tracking-wide hover:bg-[#3A3A3A] transition-colors"
                             >
                                 {item.label}
                             </Link>
                         ))}
-                        <button
-                            onClick={() => {
-                                setIsDonationOpen(true);
-                                setIsMenuOpen(false);
-                            }}
-                            className="px-5 py-3 text-[#DEDEDE] text-[15px] tracking-wide hover:bg-[#3A3A3A] transition-colors text-left w-full"
-                        >
-                            Give Us
-                        </button>
                     </div>
                 </nav>
             )}
