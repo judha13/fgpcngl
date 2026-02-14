@@ -68,7 +68,7 @@ export default function Footer() {
                         <h3 className="text-xl font-semibold mb-4 font-montserrat text-white blur_fade_in_up">CONTACT US</h3>
                         <p className="text-base font-poppins flex items-center gap-3 blur_fade_in_up">
                             <i className="fas fa-envelope"></i>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fgpcngl@gmail.com" className="hover:text-white">fgpcngl@gmail.com</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mail@fgpcngl.com" className="hover:text-white">mail@fgpcngl.com</a>
                         </p>
                         <p className="text-base font-poppins mt-2 flex items-center gap-3 blur_fade_in_up">
                             <i className="fas fa-phone-alt rotate-90"></i>

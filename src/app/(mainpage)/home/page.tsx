@@ -57,11 +57,11 @@ export default function HomePage() {
                 9488484745
               </a>
               <a
-                href="mailto:fgpcngl@gmail.com"
+                href="mailto:mail@fgpcngl.com"
                 className="px-3 sm:px-4 py-2 sm:py-3 bg-white text-[#84373D] rounded-[10px] hover:bg-[#EEEEEEFC] transition duration-300 text-center"
               >
                 <i className="fas fa-envelope mr-2"></i>
-                fgpcngl@gmail.com
+                mail@fgpcngl.com
               </a>
             </div>
           </div>
