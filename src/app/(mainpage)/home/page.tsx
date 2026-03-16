@@ -392,7 +392,7 @@ export default function HomePage() {
                   <strong>Sunday 2nd Service:</strong> 10:00AM - 12:30PM
                 </p>
                 <p className="md:text-base text-black mb-3 blur_fade_in_up">
-                  <strong>Monday Bible Study:</strong> 7:00PM - 8:30PM
+                  <strong>Bible Study 1st Sunday:</strong> 6:00PM - 8:00PM
                 </p>
                 <p className="md:text-base text-black mb-3 blur_fade_in_up">
                   <strong>Friday Fasting Prayer:</strong> 10:00AM - 1:00PM

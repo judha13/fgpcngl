@@ -68,8 +68,8 @@ const services = [
   {
     title: "Bible Study",
     img: "/home/bible_study.jpg",
-    desc: "Join us every Monday at 7 PM for teaching.",
-    time: "7 PM - 8:30 PM",
+    desc: "Join us every 1st Sunday at 6 PM for teaching.",
+    time: "6 PM - 8 PM",
     place: "FGP Church Nagercoil",
     liveLinks: {
       "2024 - கிறிஸ்துவின் சாயல்": "https://www.youtube.com/watch?v=1-nbsgFlxS0&list=PLJQgwS6Zt5q-xh5pa1iG_g13bPj4tXr2z",
