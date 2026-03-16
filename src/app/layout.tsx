@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     images: ["/header/fgpc_nagercoil.png"],
   },
   icons: {
-    icon: "/header/fgpc_nagercoil.png",
+    icon: "/header/fgpc_nagercoil_logo.jpg",
     apple: "/header/fgpc_nagercoil_logo.jpg",
   },
 };
