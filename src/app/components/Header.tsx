@@ -17,7 +17,7 @@ export default function Header() {
                     <Link href="/home">
                         <Image
                             src="/header/fgpc_nagercoil_logo.jpg"
-                            alt="Scott School logo"
+                            alt="FGPC Nagercoil Logo"
                             className="w-10 h-10 rounded-[10px]"
                             width={40}
                             height={40}
