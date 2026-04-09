@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import useBlurFadeIn from '../../hooks/useBlurFadeIn';
+import ScrollAnimation from '../../components/ScrollAnimation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const meetings = [
   {
@@ -81,7 +82,7 @@ const services = [
 
 export default function MinistriesPage() {
   const [openModal, setOpenModal] = useState<null | number>(null);
-  useBlurFadeIn();
+
   return (
     <main>
       {/* Hero Section */}
@@ -96,9 +97,14 @@ export default function MinistriesPage() {
 
         {/* Foreground Content */}
         <div className="relative z-20 p-10">
-          <h1 className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white text-center"
+          >
             Ministries
-          </h1>
+          </motion.h1>
         </div>
       </section>
 
@@ -107,17 +113,21 @@ export default function MinistriesPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className='flex justify-between'>
-            <h2 className="text-4xl font-bold text-start font-montserrat text-[#222831] mb-8 blur_fade_in_up">
-              Upcoming
-            </h2>
-            <h5 className="hidden sm:block text-xl font-semibold border border-[#222831] p-1 rounded-[10px] text-end font-montserrat text-[#222831] mb-8 blur_fade_in_up">
-              Recent Live
-            </h5>
+            <ScrollAnimation>
+              <h2 className="text-4xl font-bold text-start font-montserrat text-[#222831] mb-8">
+                Upcoming
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation>
+              <h5 className="hidden sm:block text-xl font-semibold border border-[#222831] p-1 rounded-[10px] text-end font-montserrat text-[#222831] mb-8">
+                Recent Live
+              </h5>
+            </ScrollAnimation>
           </div>
 
           <div className="flex flex-col lg:flex-row items-start gap-1 md:gap-10">
             {/* LEFT COLUMN - 40% */}
-            <div className="w-full lg:w-[40%] flex justify-center md:justify-start">
+            <ScrollAnimation className="w-full lg:w-[40%] flex justify-center md:justify-start">
               <Image
                 src="/ministries/upcoming-holy-spirit-meeting.jpg"
                 alt="Upcoming Meeting"
@@ -126,14 +136,15 @@ export default function MinistriesPage() {
                 quality={100}
                 className="rounded-2xl object-cover cursor-pointer"
               />
-            </div>
+            </ScrollAnimation>
 
             {/* RIGHT COLUMN - 60% */}
             <div className="w-full lg:w-[60%] space-y-4 mx-auto mt-8 md:mt-0">
               {meetings.map((meeting, index) => (
-                <div
+                <ScrollAnimation
                   key={index}
-                  className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden blur_fade_in_up"
+                  delay={index * 0.1}
+                  className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden"
                 >
                   {/* LEFT: Thumbnail */}
                   <div className="w-full sm:w-[40%] aspect-video relative overflow-hidden">
@@ -172,26 +183,29 @@ export default function MinistriesPage() {
                       </a>
                     </p>
                   </div>
-                </div>
+                </ScrollAnimation>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#F9F9F9] font-poppins">
+      <section className="py-20 bg-[#F9F9F9] font-poppins text-[#222831]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
-          <h2 className="text-5xl font-semibold text-center font-montserrat text-[#222831] mb-12 blur_fade_in_up">
-            Our Services
-          </h2>
+          <ScrollAnimation>
+            <h2 className="text-5xl font-semibold text-center font-montserrat mb-12">
+              Our Services
+            </h2>
+          </ScrollAnimation>
 
           {/* Service Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <div
+              <ScrollAnimation
                 key={index}
-                className="relative group rounded-[15px] overflow-hidden shadow-md hover:shadow-xl transition duration-300 blur_fade_in_up"
+                delay={index * 0.1}
+                className="relative group rounded-[15px] overflow-hidden shadow-md hover:shadow-xl transition duration-300"
               >
                 {/* Background Image */}
                 <div className="relative w-full h-60">
@@ -215,91 +229,107 @@ export default function MinistriesPage() {
                     More Details — Click Here
                   </button>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
 
-        {/* Modal */}
-        {openModal !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full p-6 relative flex flex-col md:flex-row gap-4">
-              {/* Close Button */}
-              <button
-                className="z-10 text-2xl absolute top-3 right-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full w-8 h-8 flex items-center justify-center"
-                onClick={() => setOpenModal(null)}
+        {/* Modal with Framer Motion */}
+        <AnimatePresence>
+          {openModal !== null && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+              onClick={() => setOpenModal(null)}
+            >
+              <motion.div 
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                className="bg-white rounded-xl shadow-lg max-w-4xl w-full p-6 relative flex flex-col md:flex-row gap-4"
+                onClick={(e) => e.stopPropagation()}
               >
-                ×
-              </button>
+                {/* Close Button */}
+                <button
+                  className="z-10 text-2xl absolute top-3 right-3 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-full w-8 h-8 flex items-center justify-center"
+                  onClick={() => setOpenModal(null)}
+                >
+                  ×
+                </button>
 
-              {/* Left Column: Image */}
-              <div className="w-full md:w-1/2 h-64 relative rounded-lg overflow-hidden">
-                <Image
-                  src={services[openModal].img}
-                  alt={services[openModal].title}
-                  fill
-                  className="object-cover rounded-lg"
-                />
-              </div>
-
-              {/* Right Column: Info */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center p-4 text-[#222831]">
-                <h3 className="text-2xl font-semibold mb-2">
-                  {services[openModal].title}
-                </h3>
-
-                {/* Service Times */}
-                {services[openModal].firstService && services[openModal].secondService ? (
-                  <>
-                    <p className="mb-2">
-                      <span className="font-semibold">1st Service:</span> {services[openModal].firstService}
-                    </p>
-                    <p className="mb-2">
-                      <span className="font-semibold">2nd Service:</span> {services[openModal].secondService}
-                    </p>
-                  </>
-                ) : (
-                  <p className="mb-2">
-                    <span className="font-semibold">Time:</span> {services[openModal].time}
-                  </p>
-                )}
-
-                {/* Optional Place */}
-                {services[openModal].place && (
-                  <p className="mb-4">
-                    <span className="font-semibold">Place:</span> {services[openModal].place}
-                  </p>
-                )}
-
-                {/* Description */}
-                <p className="mb-4">{services[openModal].desc}</p>
-
-                {/* Live Video Links */}
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(services[openModal].liveLinks).map(([year, link]) => (
-                    <a
-                      key={year}
-                      href={link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1 bg-[#84373D] text-white rounded hover:bg-[#a95058] text-sm font-semibold"
-                    >
-                      {year}
-                    </a>
-                  ))}
+                {/* Left Column: Image */}
+                <div className="w-full md:w-1/2 h-64 relative rounded-lg overflow-hidden">
+                  <Image
+                    src={services[openModal].img}
+                    alt={services[openModal].title}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
                 </div>
 
-              </div>
-            </div>
-          </div>
-        )}
+                {/* Right Column: Info */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-4">
+                  <h3 className="text-2xl font-semibold mb-2">
+                    {services[openModal].title}
+                  </h3>
+
+                  {/* Service Times */}
+                  {services[openModal].firstService && services[openModal].secondService ? (
+                    <>
+                      <p className="mb-2">
+                        <span className="font-semibold">1st Service:</span> {services[openModal].firstService}
+                      </p>
+                      <p className="mb-2">
+                        <span className="font-semibold">2nd Service:</span> {services[openModal].secondService}
+                      </p>
+                    </>
+                  ) : (
+                    <p className="mb-2">
+                      <span className="font-semibold">Time:</span> {services[openModal].time}
+                    </p>
+                  )}
+
+                  {/* Optional Place */}
+                  {services[openModal].place && (
+                    <p className="mb-4">
+                      <span className="font-semibold">Place:</span> {services[openModal].place}
+                    </p>
+                  )}
+
+                  {/* Description */}
+                  <p className="mb-4">{services[openModal].desc}</p>
+
+                  {/* Live Video Links */}
+                  <div className="flex flex-wrap gap-2">
+                    {Object.entries(services[openModal].liveLinks).map(([year, link]) => (
+                      <a
+                        key={year}
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1 bg-[#84373D] text-white rounded hover:bg-[#a95058] text-sm font-semibold"
+                      >
+                        {year}
+                      </a>
+                    ))}
+                  </div>
+
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
 
       <section className="py-20 bg-white font-poppins">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-semibold text-center font-montserrat text-[#222831] mb-12 blur_fade_in_up">
-            Weekly Ministries
-          </h2>
+          <ScrollAnimation>
+            <h2 className="text-5xl font-semibold text-center font-montserrat text-[#222831] mb-12">
+              Weekly Ministries
+            </h2>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {[
@@ -349,9 +379,10 @@ export default function MinistriesPage() {
                 time: "Every Sunday\n3 PM - 6 PM"
               }
             ].map((ministry, index) => (
-              <div
+              <ScrollAnimation
                 key={index}
-                className="bg-[#ebebeb] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between border border-gray-200 blur_fade_in_up"
+                delay={index * 0.05}
+                className="bg-[#ebebeb] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between border border-gray-200"
               >
                 <div className="p-6 text-center">
                   <h3 className="text-xl font-semibold text-[#222831]">{ministry.title}</h3>
@@ -362,7 +393,7 @@ export default function MinistriesPage() {
                     <div key={i}>{line}</div>
                   ))}
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

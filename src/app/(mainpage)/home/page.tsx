@@ -4,10 +4,10 @@ import Image from 'next/image'
 import Link from "next/link";
 import ImageSlider from '../../components/ImageSlider';
 import UpcomingSlider from '../../components/UpcomingSlider';
-import useBlurFadeIn from '../../hooks/useBlurFadeIn';
+import ScrollAnimation from '../../components/ScrollAnimation';
+import { motion } from 'framer-motion';
 
 export default function HomePage() {
-  useBlurFadeIn();
   return (
     <main>
       {/* Hero Section */}
@@ -36,7 +36,12 @@ export default function HomePage() {
 
         {/* Foreground Content */}
         <div className="relative z-20 p-6 font-poppins">
-          <div className="text-center md:mb-12 mb-14 blur-down">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="text-center md:mb-12 mb-14"
+          >
             {/* Title */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white font-montserrat leading-snug">
               Full Gospel Pentecostal Church, Nagercoil
@@ -64,7 +69,7 @@ export default function HomePage() {
                 mail@fgpcngl.com
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -81,23 +86,27 @@ export default function HomePage() {
 
           {/* Left Column - Content (60%) */}
           <div className="order-2 md:order-1 md:col-span-3">
-            <h2 className="text-3xl md:text-4xl font-bold font-montserrat leading-snug">
-              <span className="text-[#84373d]">Full Gospel</span> Pentecostal Church
-            </h2>
+            <ScrollAnimation>
+              <h2 className="text-3xl md:text-4xl font-bold font-montserrat leading-snug">
+                <span className="text-[#84373d]">Full Gospel</span> Pentecostal Church
+              </h2>
+            </ScrollAnimation>
 
-            <p className="text-[#212121] mt-4 text-base leading-relaxed text-justify">
-              The ministry began in 1979 under Pastor Kristhudas Samuel. In 1987,
-              Pastor Joyson took charge, leading the ministry with strong faith,
-              commitment, and God’s vision. Over the years, the ministry has grown
-              into a blessing for countless lives.
-              <Link href="/aboutus">
-                <span className="text-[#84373d] cursor-pointer"> Know More</span>
-              </Link>
-            </p>
+            <ScrollAnimation>
+              <p className="text-[#212121] mt-4 text-base leading-relaxed text-justify">
+                The ministry began in 1979 under Pastor Kristhudas Samuel. In 1987,
+                Pastor Joyson took charge, leading the ministry with strong faith,
+                commitment, and God’s vision. Over the years, the ministry has grown
+                into a blessing for countless lives.
+                <Link href="/aboutus">
+                  <span className="text-[#84373d] cursor-pointer"> Know More</span>
+                </Link>
+              </p>
+            </ScrollAnimation>
 
             {/* Social Links */}
             <div className="mt-6">
-              <div className="flex flex-wrap gap-3">
+              <ScrollAnimation className="flex flex-wrap gap-3">
                 {[
                   { icon: "fab fa-youtube", label: "fgpcngl", link: "https://www.youtube.com/@fgpcngl" },
                   { icon: "fab fa-instagram", label: "fgpcnagercoil", link: "https://www.instagram.com/fgpcnagercoil" },
@@ -117,39 +126,44 @@ export default function HomePage() {
                     <span className="text-sm font-medium">{item.label}</span>
                   </a>
                 ))}
-              </div>
+              </ScrollAnimation>
             </div>
 
             {/* Quick Info */}
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <ScrollAnimation>
+                <div className="p-5 border rounded-xl shadow-sm bg-[#ebebeb] h-full">
+                  <h3 className="text-lg font-bold text-[#413b3b]">Started At</h3>
+                  <p className="text-sm mt-2 text-[#333]">
+                    Ministry founded in 1979 by Pastor Kristhudas Samuel.
+                  </p>
+                </div>
+              </ScrollAnimation>
 
-              <div className="p-5 border rounded-xl shadow-sm bg-[#ebebeb]">
-                <h3 className="text-lg font-bold text-[#413b3b]">Started At</h3>
-                <p className="text-sm mt-2 text-[#333]">
-                  Ministry founded in 1979 by Pastor Kristhudas Samuel.
-                </p>
-              </div>
-
-              <div className="p-5 border rounded-xl shadow-sm bg-[#413b3b] text-white">
-                <h3 className="text-lg font-bold">Location</h3>
-                <p className="text-sm mt-2">
-                  174, Church Street, Vettoornimadam, Nagercoil-629003.
-                </p>
-              </div>
+              <ScrollAnimation>
+                <div className="p-5 border rounded-xl shadow-sm bg-[#413b3b] text-white h-full">
+                  <h3 className="text-lg font-bold">Location</h3>
+                  <p className="text-sm mt-2">
+                    174, Church Street, Vettoornimadam, Nagercoil-629003.
+                  </p>
+                </div>
+              </ScrollAnimation>
             </div>
           </div>
 
           {/* Right Column - Pastor Image (40%) */}
           <div className="flex justify-center md:justify-end order-1 md:order-2 md:col-span-2">
-            <Link href="/aboutus" className="relative group block">
-              <Image
-                src="/aboutus/about_1(pr.joyson).jpg"
-                alt="Pastor Joyson"
-                width={500}
-                height={400}
-                className="rounded-2xl shadow-xl object-cover w-full max-w-md"
-              />
-            </Link>
+            <ScrollAnimation>
+              <Link href="/aboutus" className="relative group block">
+                <Image
+                  src="/aboutus/about_1(pr.joyson).jpg"
+                  alt="Pastor Joyson"
+                  width={500}
+                  height={400}
+                  className="rounded-2xl shadow-xl object-cover w-full max-w-md"
+                />
+              </Link>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -160,30 +174,36 @@ export default function HomePage() {
 
           {/* Left Column - Pastor Image (40%) */}
           <div className="flex justify-center md:justify-center order-1 md:col-span-2">
-            <Link href="/johnsamjoyson" className="relative group block">
-              <Image
-                src="/home/pr-johnsam_joyson.jpg"
-                alt="Johnsam Joyson"
-                width={384}
-                height={512}
-                quality={100}
-                className="rounded-2xl cursor-pointer mx-auto block blur_fade_in_up"
-              />
-            </Link>
+            <ScrollAnimation>
+              <Link href="/johnsamjoyson" className="relative group block">
+                <Image
+                  src="/home/pr-johnsam_joyson.jpg"
+                  alt="Johnsam Joyson"
+                  width={384}
+                  height={512}
+                  quality={100}
+                  className="rounded-2xl cursor-pointer mx-auto block"
+                />
+              </Link>
+            </ScrollAnimation>
           </div>
 
           {/* Right Column - Content (60%) */}
           <div className="order-2 md:col-span-3">
-            <h2 className="text-4xl font-bold font-montserrat mb-4 blur_fade_in_up">
-              <span className="text-[#84373D]">Johnsam</span> Joyson
-            </h2>
-            <p className="text-[#212121] text-base leading-relaxed mb-6 text-justify blur_fade_in_up">
-              Pr. Johnsam Joyson serves as the pastor of FGPC Church in Nagercoil.
-              He began his ministry in <span className="text-[#84373D]">2007</span>. The Lord has given him many songs, and through these songs, he has been a blessing to many people.
-              To know more about these songs, click the image below.
-            </p>
+            <ScrollAnimation>
+              <h2 className="text-4xl font-bold font-montserrat mb-4">
+                <span className="text-[#84373D]">Johnsam</span> Joyson
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation>
+              <p className="text-[#212121] text-base leading-relaxed mb-6 text-justify">
+                Pr. Johnsam Joyson serves as the pastor of FGPC Church in Nagercoil.
+                He began his ministry in <span className="text-[#84373D]">2007</span>. The Lord has given him many songs, and through these songs, he has been a blessing to many people.
+                To know more about these songs, click the image below.
+              </p>
+            </ScrollAnimation>
             {/* Songs or Images Section */}
-            <div className="flex gap-2 mb-6 overflow-x-auto blur_fade_in_up">
+            <ScrollAnimation className="flex gap-2 mb-6 overflow-x-auto">
               {[
                 {
                   src: "/songs/johnsam/johnsam_lyrical_thumbnail.jpg",
@@ -203,7 +223,7 @@ export default function HomePage() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="relative h-32 w-56 transition-all duration-300 ease-in-out hover:w-60 cursor-pointer group"
+                  className="relative h-32 w-56 transition-all duration-300 ease-in-out hover:w-60 cursor-pointer group flex-shrink-0"
                 >
                   <Link href="/Johnsamsamjoyson">
                     <Image
@@ -223,11 +243,11 @@ export default function HomePage() {
                   </Link>
                 </div>
               ))}
-            </div>
+            </ScrollAnimation>
 
             {/* Social Icons */}
             <div className="mt-6">
-              <div className="flex gap-3 overflow-x-auto scrollbar-hide flex-nowrap blur_fade_in_up">
+              <ScrollAnimation className="flex gap-3 overflow-x-auto scrollbar-hide flex-nowrap">
                 {[
                   { icon: "fab fa-youtube", label: "YouTube", link: "https://www.youtube.com/@johnsamjoyson" },
                   { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/johnsamjoyson_official" },
@@ -247,7 +267,7 @@ export default function HomePage() {
                     <span className="text-xs font-medium">{item.label}</span>
                   </a>
                 ))}
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
 
@@ -260,17 +280,21 @@ export default function HomePage() {
 
           {/* Left Column - Content (60%) */}
           <div className="order-2 md:order-1 md:col-span-3">
-            <h2 className="text-4xl font-bold font-montserrat mb-4 blur_fade_in_up">
-              <span className="text-[#84373D]">Davidsam</span> Joyson
-            </h2>
-            <p className="text-[#212121] text-base leading-relaxed mb-6 text-justify blur_fade_in_up">
-              Pr. Davidsam Joyson serves as the pastor of FGPC Church in Nagercoil.
-              He began his ministry in <span className="text-[#84373D]">2013</span>. The Lord has given him many songs, and through these songs, he has been a blessing to many people.
-              To know more about these songs, click the image below.
-            </p>
+            <ScrollAnimation>
+              <h2 className="text-4xl font-bold font-montserrat mb-4">
+                <span className="text-[#84373D]">Davidsam</span> Joyson
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation>
+              <p className="text-[#212121] text-base leading-relaxed mb-6 text-justify">
+                Pr. Davidsam Joyson serves as the pastor of FGPC Church in Nagercoil.
+                He began his ministry in <span className="text-[#84373D]">2013</span>. The Lord has given him many songs, and through these songs, he has been a blessing to many people.
+                To know more about these songs, click the image below.
+              </p>
+            </ScrollAnimation>
 
             {/* Songs or Images Section */}
-            <div className="flex gap-2 mb-6 overflow-x-auto blur_fade_in_up">
+            <ScrollAnimation className="flex gap-2 mb-6 overflow-x-auto">
               {[
                 {
                   src: "/songs/davidsam/davidsam_famous.jpg",
@@ -290,7 +314,7 @@ export default function HomePage() {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className="relative h-32 w-56 transition-all duration-300 ease-in-out hover:w-60 cursor-pointer group"
+                  className="relative h-32 w-56 transition-all duration-300 ease-in-out hover:w-60 cursor-pointer group flex-shrink-0"
                 >
                   <Link href="/davidsamjoyson">
                     <Image
@@ -309,11 +333,11 @@ export default function HomePage() {
                   </Link>
                 </div>
               ))}
-            </div>
+            </ScrollAnimation>
 
             {/* Social Icons */}
             <div className="mt-6">
-              <div className="flex gap-3 overflow-x-auto scrollbar-hide flex-nowrap blur_fade_in_up">
+              <ScrollAnimation className="flex gap-3 overflow-x-auto scrollbar-hide flex-nowrap">
                 {[
                   { icon: "fab fa-youtube", label: "YouTube", link: "https://www.youtube.com/@davidsamjoyson1" },
                   { icon: "fab fa-instagram", label: "Instagram", link: "https://www.instagram.com/davidsam_joyson" },
@@ -329,23 +353,25 @@ export default function HomePage() {
                     className="flex flex-row items-center justify-center gap-2 p-2 bg-[#F5F5F5] rounded-lg shadow 
                   hover:bg-[#84373D] hover:text-white cursor-pointer transition-colors duration-300 ease-in-out min-w-[120px] flex-shrink-0">
                     <i className={`${item.icon} text-xl`}></i>
-                    <span className="text-xs font-medium blur_fade_in_up">{item.label}</span>
+                    <span className="text-xs font-medium">{item.label}</span>
                   </a>
                 ))}
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
 
           {/* Right Column - Pastor Image (40%) */}
           <div className="flex justify-center md:justify-end order-1 md:order-2 md:col-span-2">
-            <Link href="/davidsamjoyson" className="relative group block">
-              <Image
-                src="/home/pr-davidsam_joyson.jpg"
-                alt="Davidsam Joyson" width={384}
-                height={512} quality={100} unoptimized={true}
-                className="rounded-2xl object-cover cursor-pointer blur_fade_in_up"
-              />
-            </Link>
+            <ScrollAnimation>
+              <Link href="/davidsamjoyson" className="relative group block">
+                <Image
+                  src="/home/pr-davidsam_joyson.jpg"
+                  alt="Davidsam Joyson" width={384}
+                  height={512} quality={100} unoptimized={true}
+                  className="rounded-2xl object-cover cursor-pointer"
+                />
+              </Link>
+            </ScrollAnimation>
           </div>
 
         </div>
@@ -363,105 +389,107 @@ export default function HomePage() {
           {/* Central Box Wrapper (Relative for positioning) */}
           <div className="relative max-w-3xl mx-auto">
             {/* Central Box */}
-            <div className="bg-[#FFFFFFA8] backdrop-blur-md shadow-2xl p-6 text-center rounded-[10px] blur_fade_in_up">
-              <div className="p-6 border-2 border-black rounded-[10px]">
-                <h2
-                  className="relative text-4xl md:text-7xl text-black drop-shadow-md mb-1 font-bold font-montserrat blur_fade_in_up"
-                  style={{
-                    WebkitTextFillColor: 'black', // Text fill
-                    WebkitTextStrokeWidth: '25px',   // Stroke width
-                    WebkitTextStrokeColor: '#0000000D', // Stroke color (light black)
-                    position: 'relative',
-                  }}
-                >
-                  Our Services
-                </h2>
-                {/* <div className="w-24 md:w-56 mx-auto mb-6" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div> */}
-                <div className="flex items-center justify-center mb-6 space-x-2 px-24 md:px-56">
+            <ScrollAnimation>
+              <div className="bg-[#FFFFFFA8] backdrop-blur-md shadow-2xl p-6 text-center rounded-[10px]">
+                <div className="p-6 border-2 border-black rounded-[10px]">
+                  <h2
+                    className="relative text-4xl md:text-7xl text-black drop-shadow-md mb-1 font-bold font-montserrat"
+                    style={{
+                      WebkitTextFillColor: 'black', // Text fill
+                      WebkitTextStrokeWidth: '25px',   // Stroke width
+                      WebkitTextStrokeColor: '#0000000D', // Stroke color (light black)
+                      position: 'relative',
+                    }}
+                  >
+                    Our Services
+                  </h2>
+                  {/* <div className="w-24 md:w-56 mx-auto mb-6" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div> */}
+                  <div className="flex items-center justify-center mb-6 space-x-2 px-24 md:px-56">
 
-                  {/* Solid line part */}
-                  <div className="w-2" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
-                  <div className="w-2" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
-                  <div className="flex-1" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
+                    {/* Solid line part */}
+                    <div className="w-2" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
+                    <div className="w-2" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
+                    <div className="flex-1" style={{ height: '2.8px', backgroundColor: '#84373D' }}></div>
+                  </div>
+
+                  <p className="md:text-base text-black mb-3">
+                    <strong>Sunday 1st Service:</strong> 6:00AM - 8:30AM
+                  </p>
+                  <p className="md:text-base text-black mb-3">
+                    <strong>Sunday 2nd Service:</strong> 10:00AM - 12:30PM
+                  </p>
+                  <p className="md:text-base text-black mb-3">
+                    <strong>Bible Study 1st Sunday:</strong> 6:00PM - 8:00PM
+                  </p>
+                  <p className="md:text-base text-black mb-3">
+                    <strong>Friday Fasting Prayer:</strong> 10:00AM - 1:00PM
+                  </p>
+                  <p className="md:text-base text-black">
+                    <strong>Saturday Night Worship:</strong> 7:00PM - 8:30PM
+                  </p>
+                  <p className='text-black pt-4'>
+                    Know More About the Other Services
+                    <Link href="/ministries" className="relative group text-[#84373D] font-bold inline-block hover:underline pl-2">
+                      CLICK HERE &gt;&gt;
+                    </Link>
+                  </p>
                 </div>
-
-                <p className="md:text-base text-black mb-3 blur_fade_in_up">
-                  <strong>Sunday 1st Service:</strong> 6:00AM - 8:30AM
-                </p>
-                <p className="md:text-base text-black mb-3 blur_fade_in_up">
-                  <strong>Sunday 2nd Service:</strong> 10:00AM - 12:30PM
-                </p>
-                <p className="md:text-base text-black mb-3 blur_fade_in_up">
-                  <strong>Bible Study 1st Sunday:</strong> 6:00PM - 8:00PM
-                </p>
-                <p className="md:text-base text-black mb-3 blur_fade_in_up">
-                  <strong>Friday Fasting Prayer:</strong> 10:00AM - 1:00PM
-                </p>
-                <p className="md:text-base text-black blur_fade_in_up">
-                  <strong>Saturday Night Worship:</strong> 7:00PM - 8:30PM
-                </p>
-                <p className='text-black pt-4 blur_fade_in_up'>
-                  Know More About the Other Services
-                  <Link href="/ministries" className="relative group text-[#84373D] font-bold inline-block hover:underline pl-2">
-                    CLICK HERE &gt;&gt;
-                  </Link>
-                </p>
               </div>
-            </div>
+            </ScrollAnimation>
 
             {/* Floating Images aligned to the edges */}
             {/* Sunday Service */}
-            <div className="absolute md:-top-8 -top-12 -left-2 md:-left-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white">
+            <ScrollAnimation className="absolute md:-top-8 -top-12 -left-2 md:-left-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white shadow-lg">
               <Link href="/ministries">
                 <Image
                   src="/home/sunday_service.jpg"
                   alt="Sunday Service"
                   width={800}
                   height={500} quality={100}
-                  className="rounded-lg blur_fade_in_up"
+                  className="rounded-lg"
                   style={{ boxShadow: '5px 11px 15px 1px rgba(0,0,0,0.3)' }}
                 />
               </Link>
-            </div>
+            </ScrollAnimation>
 
             {/* Fasting Prayer */}
-            <div className="absolute md:-top-8 -top-12 -right-2 md:-right-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white">
+            <ScrollAnimation className="absolute md:-top-8 -top-12 -right-2 md:-right-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white shadow-lg">
               <Link href="/ministries">
                 <Image
                   src="/home/fasting_prayer.jpg"
                   alt="Fasting Prayer" width={800}
                   height={500} quality={100}
-                  className="rounded-lg blur_fade_in_up"
+                  className="rounded-lg"
                   style={{ boxShadow: '5px 11px 15px 1px rgba(0,0,0,0.3)' }}
                 />
               </Link>
-            </div>
+            </ScrollAnimation>
 
             {/* Bible Study */}
-            <div className="absolute md:-bottom-8 -bottom-12 -left-2 md:-left-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white">
+            <ScrollAnimation className="absolute md:-bottom-8 -bottom-12 -left-2 md:-left-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white shadow-lg">
               <Link href="/ministries">
                 <Image
                   src="/home/bible_study.jpg"
                   alt="Bible Study" width={800}
                   height={500} quality={100}
-                  className="rounded-lg blur_fade_in_up"
+                  className="rounded-lg"
                   style={{ boxShadow: '5px 11px 15px 1px rgba(0,0,0,0.3)' }}
                 />
               </Link>
-            </div>
+            </ScrollAnimation>
 
             {/* Saturday Worship */}
-            <div className="absolute md:-bottom-8 -bottom-12 -right-2 md:-right-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white">
+            <ScrollAnimation className="absolute md:-bottom-8 -bottom-12 -right-2 md:-right-16 w-40 md:w-56 rounded-xl border-3 border-white p-1 overflow-visible transform hover:scale-105 transition duration-300 animate-move bg-white shadow-lg">
               <Link href="/ministries">
                 <Image
                   src="/home/saturday_worship.jpg"
                   alt="Saturday Worship" width={800}
                   height={500} quality={100}
-                  className="rounded-lg blur_fade_in_up"
+                  className="rounded-lg"
                   style={{ boxShadow: '5px 11px 15px 1px rgba(0,0,0,0.3)' }}
                 />
               </Link>
-            </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -469,101 +497,111 @@ export default function HomePage() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
-          <h2 className="text-4xl font-bold text-center font-montserrat text-gray-900 blur_fade_in_up">
-            Next <span className="text-[#84373D]">Upcoming</span>
-          </h2>
+          <ScrollAnimation>
+            <h2 className="text-4xl font-bold text-center font-montserrat text-gray-900">
+              Next <span className="text-[#84373D]">Upcoming</span>
+            </h2>
+          </ScrollAnimation>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center blur_fade_in_up">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
             {/* LEFT COLUMN */}
-            <UpcomingSlider />
+            <ScrollAnimation>
+              <UpcomingSlider />
+            </ScrollAnimation>
 
             {/* RIGHT COLUMN - Event & Song Details */}
             <div className="space-y-4 max-w-xl mx-auto mt-8 md:mt-0">
               {/* Event Card */}
-              <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <Image
-                  src="/ministries/upcoming-holy-spirit-meeting.jpg"
-                  alt="Event Thumbnail" width={112}
-                  height={112} quality={100}
-                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
-                />
-                <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
-                  <h3 className="text-2xl md:text-xl font-semibold text-gray-900 mb-2 leading-snug">
-                    Holy Spirit Meeting 2025
-                  </h3>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Place:</span> FGP Church, Nagercoil
-                  </p>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Date & Time:</span> Aug 25th - Aug 29th, 10.00 Am
-                  </p>
-                  <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">Live Stream:</span>{' '}
-                    <a
-                      href="https://www.youtube.com/watch?v=EYXvcpGSfsk&list=PLJQgwS6Zt5q_f1qjrGwiQ0zczT2AHhqkS"
-                      className="text-[#84373D] underline hover:text-[#a95058] transition-colors duration-300"
-                      aria-label="Watch Live Stream"
-                    >
-                      Watch Here
-                    </a>
-                  </p>
+              <ScrollAnimation>
+                <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                  <Image
+                    src="/ministries/upcoming-holy-spirit-meeting.jpg"
+                    alt="Event Thumbnail" width={112}
+                    height={112} quality={100}
+                    className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm"
+                  />
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-2xl md:text-xl font-semibold text-gray-900 mb-2 leading-snug">
+                      Holy Spirit Meeting 2025
+                    </h3>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Place:</span> FGP Church, Nagercoil
+                    </p>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Date & Time:</span> Aug 25th - Aug 29th, 10.00 Am
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold text-gray-900">Live Stream:</span>{' '}
+                      <a
+                        href="https://www.youtube.com/watch?v=EYXvcpGSfsk&list=PLJQgwS6Zt5q_f1qjrGwiQ0zczT2AHhqkS"
+                        className="text-[#84373D] underline hover:text-[#a95058] transition-colors duration-300"
+                        aria-label="Watch Live Stream"
+                      >
+                        Watch Here
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
 
               {/* Song Card 1 */}
-              <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <Image
-                  src="/songs/johnsam/um-nithiyai-solla-latest.jpg"
-                  alt="Johnsam Joyson Song" width={112}
-                  height={112} quality={100}
-                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
-                />
-                <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Song Release {`"UM NEETHIYAI"`}</h3>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Sung By:</span> Johnsam Joyson
-                  </p>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Released On:</span> August 17th, 2025, 6:00 PM
-                  </p>
-                  <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">Listen Soon:</span>{' '}
-                    <a
-                      href="https://youtu.be/CwjJXGy0nkQ?si=RkfOTHqAQQTao2FM"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <span className="text-[#84373D] font-semibold">Watch Here</span>
-                    </a>
-                  </p>
+              <ScrollAnimation>
+                <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                  <Image
+                    src="/songs/johnsam/um-nithiyai-solla-latest.jpg"
+                    alt="Johnsam Joyson Song" width={112}
+                    height={112} quality={100}
+                    className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm"
+                  />
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Song Release {`"UM NEETHIYAI"`}</h3>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Sung By:</span> Johnsam Joyson
+                    </p>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Released On:</span> August 17th, 2025, 6:00 PM
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold text-gray-900">Listen Soon:</span>{' '}
+                      <a
+                        href="https://youtu.be/CwjJXGy0nkQ?si=RkfOTHqAQQTao2FM"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <span className="text-[#84373D] font-semibold">Watch Here</span>
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
 
               {/* Song Card 2 */}
-              <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <Image
-                  src="/songs/davidsam/neer-indri-latest.webp"
-                  alt="Davidsam Joyson Song" width={112}
-                  height={112} quality={100}
-                  className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm blur_fade_in_up"
-                />
-                <div className="flex-1 flex flex-col justify-center blur_fade_in_up">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Song Release {`"NEERINDRI"`}</h3>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Sung By:</span> Davidsam Joyson
-                  </p>
-                  <p className="text-gray-700 text-base md:text-sm mb-1">
-                    <span className="font-semibold text-gray-900">Released On:</span> Jun 28th, 2025, 6:30 PM
-                  </p>
-                  <p className="text-gray-700">
-                    <span className="font-semibold text-gray-900">Listen Soon:</span>{' '}
-                    <a href="https://youtu.be/3OtDemZ68bA?si=CfVkPZiT-azowRx4"
-                      target="_blank"
-                      rel="noopener noreferrer">
-                      <span className="text-[#84373D] font-semibold">Watch Here</span>
-                    </a>
-                  </p>
+              <ScrollAnimation>
+                <div className="bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex gap-6 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                  <Image
+                    src="/songs/davidsam/neer-indri-latest.webp"
+                    alt="Davidsam Joyson Song" width={112}
+                    height={112} quality={100}
+                    className="w-28 md:w-20 h-full rounded-xl object-cover flex-shrink-0 shadow-sm"
+                  />
+                  <div className="flex-1 flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 leading-snug">Song Release {`"NEERINDRI"`}</h3>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Sung By:</span> Davidsam Joyson
+                    </p>
+                    <p className="text-gray-700 text-base md:text-sm mb-1">
+                      <span className="font-semibold text-gray-900">Released On:</span> Jun 28th, 2025, 6:30 PM
+                    </p>
+                    <p className="text-gray-700">
+                      <span className="font-semibold text-gray-900">Listen Soon:</span>{' '}
+                      <a href="https://youtu.be/3OtDemZ68bA?si=CfVkPZiT-azowRx4"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <span className="text-[#84373D] font-semibold">Watch Here</span>
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
         </div>
@@ -575,8 +613,10 @@ export default function HomePage() {
 
             {/* Left Column - Sermons */}
             <div className="flex flex-col items-center">
-              <h2 className="text-4xl font-montserrat font-bold text-gray-800 mb-6 blur_fade_in_up">Sermons</h2>
-              <div className="relative flex items-center justify-center mb-6 image_card blur_fade_in_up">
+              <ScrollAnimation>
+                <h2 className="text-4xl font-montserrat font-bold text-gray-800 mb-6">Sermons</h2>
+              </ScrollAnimation>
+              <ScrollAnimation className="relative flex items-center justify-center mb-6 image_card">
                 {/* Left Side Image */}
                 <div className="absolute -left-6 sm:-left-10 md:-left-16">
                   <Image
@@ -609,21 +649,25 @@ export default function HomePage() {
                     className="w-32 h-40 sm:w-40 sm:h-48 md:w-56 md:h-64 rounded-xl side-card object-cover rotate_image_right"
                   />
                 </div>
-              </div>
+              </ScrollAnimation>
 
-              <p className="text-gray-700 text-base blur_fade_in_up">
-                Explore a collection of life-changing sermons that uplift, guide your faith, and strengthen
-                spiritual growth. Start watching now{" "}
-                <Link href="/sermons" className="text-[#84373D] font-semibold hover:underline">
-                  CLICK HERE &gt;&gt;
-                </Link>
-              </p>
+              <ScrollAnimation>
+                <p className="text-gray-700 text-base">
+                  Explore a collection of life-changing sermons that uplift, guide your faith, and strengthen
+                  spiritual growth. Start watching now{" "}
+                  <Link href="/sermons" className="text-[#84373D] font-semibold hover:underline">
+                    CLICK HERE &gt;&gt;
+                  </Link>
+                </p>
+              </ScrollAnimation>
             </div>
 
             {/* Right Column - Gallery */}
             <div className="flex flex-col items-center">
-              <h2 className="text-4xl font-bold font-montserrat text-gray-800 mb-6 blur_fade_in_up">Gallery</h2>
-              <div className="relative flex items-center justify-center mb-6 image_card blur_fade_in_up">
+              <ScrollAnimation>
+                <h2 className="text-4xl font-bold font-montserrat text-gray-800 mb-6">Gallery</h2>
+              </ScrollAnimation>
+              <ScrollAnimation className="relative flex items-center justify-center mb-6 image_card">
                 {/* Left Side Image */}
                 <div className="absolute -left-6 sm:-left-10 md:-left-16">
                   <Image
@@ -656,15 +700,17 @@ export default function HomePage() {
                     className="w-32 h-40 sm:w-40 sm:h-48 md:w-56 md:h-64 rounded-xl side-card object-cover object-left rotate_image_right"
                   />
                 </div>
-              </div>
+              </ScrollAnimation>
 
-              <p className="text-gray-700 text-base blur_fade_in_up">
-                Get a glimpse of the highlights from our special meetings captured in photos. Explore the
-                gallery now{" "}
-                <Link href="/gallery" className="text-[#84373D] font-semibold hover:underline">
-                  CLICK HERE &gt;&gt;
-                </Link>
-              </p>
+              <ScrollAnimation>
+                <p className="text-gray-700 text-base">
+                  Get a glimpse of the highlights from our special meetings captured in photos. Explore the
+                  gallery now{" "}
+                  <Link href="/gallery" className="text-[#84373D] font-semibold hover:underline">
+                    CLICK HERE &gt;&gt;
+                  </Link>
+                </p>
+              </ScrollAnimation>
             </div>
           </div>
         </div>

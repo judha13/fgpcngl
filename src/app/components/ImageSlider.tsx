@@ -10,10 +10,10 @@ import 'swiper/css/pagination'
 
 export default function ImageSlider() {
   const images = [
-    'new_year(2026)-3', 'new_year(2026)-8', 'new_year(2026)-6',
-    'new_year(2026)-9', 'new_year(2026)-5', 'new_year(2026)-10',
-    'new_year(2026)-1', 'new_year(2026)-2', 'new_year(2026)-7',
-    'new_year(2026)-4'
+    'youth_fest(2026)-1', 'youth_fest(2026)-2', 'youth_fest(2026)-3',
+    'youth_fest(2026)-4', 'youth_fest(2026)-5', 'youth_fest(2026)-6',
+    'youth_fest(2026)-7', 'youth_fest(2026)-8', 'youth_fest(2026)-9',
+    'youth_fest(2026)-10', 'youth_fest(2026)-11'
   ]
 
   const [previewImage, setPreviewImage] = useState<string | null>(null)
@@ -39,8 +39,8 @@ export default function ImageSlider() {
           <Image
             src={previewImage!}
             alt="Preview"
-              width={600}
-              height={400} quality={100}  
+            width={600}
+            height={400} quality={100}
             className="rounded-xl shadow-lg object-contain"
           />
           <button
@@ -80,11 +80,11 @@ export default function ImageSlider() {
             <SwiperSlide key={index}>
               <div className="relative w-full h-24 md:h-32 rounded overflow-hidden cursor-pointer">
                 <Image
-                  src={`/gallery/2026/${img}.png`}
+                  src={`/gallery/youth_fest_2026/${img}.png`}
                   alt={`Slide ${index + 1}`}
                   fill quality={100}
                   className="object-cover"
-                  onClick={() => setPreviewImage(`/gallery/2026/${img}.png`)}
+                  onClick={() => setPreviewImage(`/gallery/youth_fest_2026/${img}.png`)}
                 />
               </div>
 

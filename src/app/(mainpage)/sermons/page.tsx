@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image';
-import useBlurFadeIn from '../../hooks/useBlurFadeIn';
+import ScrollAnimation from '../../components/ScrollAnimation';
+import { motion } from 'framer-motion';
 
 export default function SermonsPage() {
-  useBlurFadeIn();
   return (
     <main>
       {/* Hero Section */}
@@ -16,16 +16,23 @@ export default function SermonsPage() {
       >
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] z-10"></div>
         <div className="relative z-20 p-10">
-          <h1 className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white text-center"
+          >
             Sermons
-          </h1>
+          </motion.h1>
         </div>
       </section>
 
       {/* Playlist Section */}
       <section className="py-16 bg-white font-poppins">
         <div className="container mx-auto px-6 max-w-6xl">
-          <h2 className="text-3xl font-semibold mb-10 font-montserrat text-[#222831] blur_fade_in_up">Playlists</h2>
+          <ScrollAnimation>
+            <h2 className="text-3xl font-semibold mb-10 font-montserrat text-[#222831]">Playlists</h2>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {[
@@ -130,58 +137,63 @@ export default function SermonsPage() {
                 img: "https://img.youtube.com/vi/H9V2CG0xuvg/maxresdefault.jpg",
               },
             ].map((playlist, i) => (
-              <a
+              <ScrollAnimation
                 key={i}
-                href={playlist.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-[#F7F7F7] border border-[#DEDEDE] rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition pt-2 blur_fade_in_up"
+                delay={i * 0.05}
+                className="block bg-[#F7F7F7] border border-[#DEDEDE] rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition pt-2"
               >
-                {/* First blurred section */}
-                <div className="flex justify-center">
-                  <div className="w-[75%] rounded-t-lg overflow-hidden">
-                    <div className="relative h-2 rounded-t-lg overflow-hidden">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center"
-                        style={{ backgroundImage: `url(${playlist.img})` }}
-                      />
-                      <div className="absolute inset-0 backdrop-blur-md bg-black/20 rounded-t-lg" />
+                <a
+                  href={playlist.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
+                  {/* First blurred section */}
+                  <div className="flex justify-center">
+                    <div className="w-[75%] rounded-t-lg overflow-hidden">
+                      <div className="relative h-2 rounded-t-lg overflow-hidden">
+                        <div
+                          className="absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${playlist.img})` }}
+                        />
+                        <div className="absolute inset-0 backdrop-blur-md bg-black/20 rounded-t-lg" />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Second blurred section (rotated 180°) */}
-                <div className="flex justify-center">
-                  <div className="w-[85%] rounded-t-lg overflow-hidden">
-                    <div className="relative h-8 rounded-t-lg overflow-hidden transform rotate-180">
-                      <div
-                        className="absolute inset-0 bg-cover bg-center bottom-0"
-                        style={{ backgroundImage: `url(${playlist.img})` }}
-                      />
-                      <div className="absolute inset-0 backdrop-blur-md border-t-[1px] border-white bg-black/30 rotate-180 rounded-t-lg" />
+                  {/* Second blurred section (rotated 180°) */}
+                  <div className="flex justify-center">
+                    <div className="w-[85%] rounded-t-lg overflow-hidden">
+                      <div className="relative h-8 rounded-t-lg overflow-hidden transform rotate-180">
+                        <div
+                          className="absolute inset-0 bg-cover bg-center bottom-0"
+                          style={{ backgroundImage: `url(${playlist.img})` }}
+                        />
+                        <div className="absolute inset-0 backdrop-blur-md border-t-[1px] border-white bg-black/30 rotate-180 rounded-t-lg" />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Clear Thumbnail Image */}
-                <div className="w-full h-64 md:h-40 p-2 -mt-8 relative z-10 rounded-lg overflow-hidden">
-                  <Image
-                    src={playlist.img}
-                    alt={playlist.title} width={400}
-                    height={250}
-                    className="w-full h-full object-cover rounded-lg shadow-md border-t-[1px] border-white"
-                  />
-                </div>
-                {/* Text Content */}
-                <div className="px-4 pb-4 pt-2">
-                  <h3 className="text-base font-semibold text-gray-800  leading-snug mb-2">
-                    {playlist.title}
-                  </h3>
-                  <p className="text-sm font-medium text-gray-500 hover:text-[#84373D] transition">
-                    View full playlist
-                  </p>
-                </div>
-              </a>
+                  {/* Clear Thumbnail Image */}
+                  <div className="w-full h-64 md:h-40 p-2 -mt-8 relative z-10 rounded-lg overflow-hidden">
+                    <Image
+                      src={playlist.img}
+                      alt={playlist.title} width={400}
+                      height={250}
+                      className="w-full h-full object-cover rounded-lg shadow-md border-t-[1px] border-white"
+                    />
+                  </div>
+                  {/* Text Content */}
+                  <div className="px-4 pb-4 pt-2">
+                    <h3 className="text-base font-semibold text-gray-800  leading-snug mb-2">
+                      {playlist.title}
+                    </h3>
+                    <p className="text-sm font-medium text-gray-500 hover:text-[#84373D] transition">
+                      View full playlist
+                    </p>
+                  </div>
+                </a>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image';
-import useBlurFadeIn from '../../hooks/useBlurFadeIn';
+import ScrollAnimation from '../../components/ScrollAnimation';
+import { motion } from 'framer-motion';
 
 export default function GalleryPage() {
-  useBlurFadeIn();
   return (
     <main>
       <section
@@ -19,7 +19,14 @@ export default function GalleryPage() {
 
         {/* Foreground Content */}
         <div className="relative z-20 p-10">
-          <h1 className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white">Gallery</h1>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="font-montserrat mb-48 md:mb-24 text-6xl font-semibold text-white text-center"
+          >
+            Gallery
+          </motion.h1>
         </div>
       </section>
 
@@ -36,8 +43,9 @@ export default function GalleryPage() {
             { src: '/gallery/gallery_thumbnails/Fr.Berchmans.jpg', alt: 'Gallery 7' },
             { src: '/gallery/gallery_thumbnails/sunday_school_aniversary.jpg', alt: 'Gallery 8' },
           ].map((img, index) => (
-            <div
+            <ScrollAnimation
               key={index}
+              delay={index * 0.1}
               className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-[1.02]"
             >
               <Image
@@ -45,9 +53,9 @@ export default function GalleryPage() {
                 alt={img.alt}
                 width={300}
                 height={200}
-                className="w-full h-full object-cover blur_fade_in_up"
+                className="w-full h-full object-cover"
               />
-            </div>
+            </ScrollAnimation>
           ))}
         </div>
       </section>

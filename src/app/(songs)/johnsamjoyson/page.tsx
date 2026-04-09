@@ -2,6 +2,7 @@
 
 import VideoCarousel from '../../components/VideoCarousel';
 import Image from 'next/image'
+import ScrollAnimation from '../../components/ScrollAnimation';
 
 export default function JohnsamJoysonPage() {
   return (
@@ -17,21 +18,25 @@ export default function JohnsamJoysonPage() {
       </section>
 
       {/* Upcoming Section */}
-      <section className="pt-20 pb-10 bg-white font-poppins">
+      <section className="pt-20 pb-10 bg-white font-poppins text-[#222831]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Title */}
           <div className='flex justify-between'>
-            <h2 className="text-4xl font-bold text-start font-montserrat text-[#222831] mb-8 blur_fade_in_up">
-              Upcoming
-            </h2>
-            <h5 className="hidden sm:block text-xl font-semibold border border-[#222831] p-1 rounded-[10px] text-end font-montserrat text-[#222831] mb-8 blur_fade_in_up">
-              Recent Songs
-            </h5>
+            <ScrollAnimation>
+              <h2 className="text-4xl font-bold text-start font-montserrat mb-8">
+                Upcoming
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation>
+              <h5 className="hidden sm:block text-xl font-semibold border border-[#222831] p-1 rounded-[10px] text-end font-montserrat mb-8">
+                Recent Songs
+              </h5>
+            </ScrollAnimation>
           </div>
 
           <div className="flex flex-col lg:flex-row items-start gap-1 md:gap-10">
             {/* LEFT COLUMN - 40% */}
-            <div className="w-full lg:w-[40%] flex justify-center md:justify-start">
+            <ScrollAnimation className="w-full lg:w-[40%] flex justify-center md:justify-start">
               <Image
                 src="/songs/johnsam/um-nithiyai-solla-latest.jpg"
                 alt="Johnsam Joyson"
@@ -40,13 +45,13 @@ export default function JohnsamJoysonPage() {
                 quality={100}
                 className="rounded-2xl object-cover cursor-pointer"
               />
-            </div>
+            </ScrollAnimation>
 
             {/* RIGHT COLUMN - 60% */}
             <div className="w-full lg:w-[60%] space-y-4 mx-auto mt-8 md:mt-0">
 
               {/* Song Card 1 */}
-              <div className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden blur_fade_in_up">
+              <ScrollAnimation className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden">
 
                 {/* LEFT: Thumbnail */}
                 <div className="w-full sm:w-[40%] aspect-video relative overflow-hidden">
@@ -85,10 +90,10 @@ export default function JohnsamJoysonPage() {
                     </a>
                   </p>
                 </div>
-              </div>
+              </ScrollAnimation>
 
               {/* Song Card 2 */}
-              <div className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden blur_fade_in_up">
+              <ScrollAnimation className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden">
 
                 {/* LEFT: Thumbnail */}
                 <div className="w-full sm:w-[40%] aspect-video relative overflow-hidden">
@@ -127,10 +132,10 @@ export default function JohnsamJoysonPage() {
                     </a>
                   </p>
                 </div>
-              </div>
+              </ScrollAnimation>
 
               {/* Song Card 3 */}
-              <div className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden blur_fade_in_up">
+              <ScrollAnimation className="bg-[#ECECEC5E] border border-[#DEDEDE] rounded-[10px] shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col sm:flex-row overflow-hidden">
 
                 {/* LEFT: Thumbnail */}
                 <div className="w-full sm:w-[40%] aspect-video relative overflow-hidden">
@@ -169,7 +174,7 @@ export default function JohnsamJoysonPage() {
                     </a>
                   </p>
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
         </div>
