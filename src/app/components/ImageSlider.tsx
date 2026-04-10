@@ -11,8 +11,8 @@ import 'swiper/css/pagination'
 export default function ImageSlider() {
   const images = [
     'youth_fest(2026)-1', 'youth_fest(2026)-2', 'youth_fest(2026)-3',
-    'youth_fest(2026)-4', 'youth_fest(2026)-5', 'youth_fest(2026)-6',
-    'youth_fest(2026)-7', 'youth_fest(2026)-8', 'youth_fest(2026)-9',
+    'youth_fest(2026)-6', 'youth_fest(2026)-4', 'youth_fest(2026)-7',
+    'youth_fest(2026)-5', 'youth_fest(2026)-8', 'youth_fest(2026)-9',
     'youth_fest(2026)-10', 'youth_fest(2026)-11'
   ]
 
